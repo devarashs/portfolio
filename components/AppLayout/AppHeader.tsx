@@ -21,7 +21,7 @@ export default function AppHeader() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Image src={GithubLogo} alt="" width={25} height={25} />
+            <Image src={GithubLogo} alt="github-logo" width={25} height={25} />
           </a>
         </div>
       </div>
