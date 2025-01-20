@@ -3,6 +3,8 @@ import React from "react";
 import Link from "next/link";
 import ThemeChanger from "../ThemeChanger/ThemeChanger";
 import { HeaderInfo } from "@/app/constants/information";
+import Image from "next/image";
+import GithubLogo from "@/material/github.png";
 
 export default function AppHeader() {
   return (
@@ -14,6 +16,13 @@ export default function AppHeader() {
 
         <div className="flex flex-row justify-between items-center gap-5">
           <ThemeChanger />
+          <a
+            href={HeaderInfo.githubLink}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Image src={GithubLogo} alt="" width={25} height={25} />
+          </a>
         </div>
       </div>
     </header>
