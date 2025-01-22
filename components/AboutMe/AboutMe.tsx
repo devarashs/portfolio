@@ -2,7 +2,7 @@ import React from "react";
 
 export default function AboutMe() {
   return (
-    <div className="bg-gray-300 dark:bg-slate-800 py-12 px-6 md:px-12 lg:px-24 rounded-lg shadow-lg">
+    <div className="bg-slate-200 dark:bg-slate-800 py-12 px-6 md:px-12 lg:px-24 rounded-lg shadow-lg">
       <h2 className="text-3xl font-bold  mb-4">About Me</h2>
       <p className="text-lg  leading-relaxed mb-4">
         Hi, I&apos;m <span className="font-semibold ">Arash Salehkhah</span>, a

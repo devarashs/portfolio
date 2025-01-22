@@ -19,7 +19,7 @@ export interface ContactCard {
 export default function ContactMe() {
   function CardHolder({ data }: { data: ContactCard }) {
     return (
-      <Card>
+      <Card className="bg-red-100 dark:bg-red-950">
         <div className="flex flex-row justify-between py-5">
           <CardHeader>
             <CardTitle>{data.title}</CardTitle>
@@ -29,7 +29,7 @@ export default function ContactMe() {
             {data.title === "Email" ? (
               <a href={`mailto:${data.link}`}>
                 <Image
-                  className="hover:scale-75 transition-all duration-500 cursor-pointer"
+                  className="hover:scale-75 transition-all duration-500 cursor-pointer rounded-xl"
                   src={data.logo}
                   alt={data.title}
                   width={35}
@@ -39,7 +39,7 @@ export default function ContactMe() {
             ) : (
               <a href={data.link} target="_blank" rel="noopener noreferrer">
                 <Image
-                  className="hover:scale-75 transition-all duration-500 cursor-pointer"
+                  className="hover:scale-75 transition-all duration-500 cursor-pointer rounded-xl"
                   src={data.logo}
                   alt={data.title}
                   width={35}
