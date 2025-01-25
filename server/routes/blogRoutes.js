@@ -1,6 +1,6 @@
 import express from "express";
 import asyncWrapper from "../wrapper/asyncWrapper.js";
-import { isAdmin, isAuth } from "../utils";
+import { isAdmin, isAuth } from "../utils.js";
 import Blog from "../models/blogModel.js";
 
 const blogRouter = express.Router();
@@ -28,3 +28,5 @@ blogRouter.get(
     res.send(blogs);
   })
 );
+
+export default blogRouter;
