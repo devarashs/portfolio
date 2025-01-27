@@ -52,7 +52,7 @@ app.get("/check", (req, res) => {
   res.send("ok");
 });
 
-app.use("/users", userRouter);
+app.use("/user", userRouter);
 app.use("/blog", blogRouter);
 const fallbackPort = 5000;
 

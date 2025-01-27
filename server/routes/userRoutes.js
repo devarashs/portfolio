@@ -33,7 +33,7 @@ userRouter.post(
 userRouter.post(
   "/signup",
   asyncWrapper(async (req, res) => {
-    const SignupFormValues = req.body.values;
+    const SignupFormValues = req.body;
 
     const validatePassword = passwordValidator.parse(SignupFormValues.password);
 
@@ -43,14 +43,15 @@ userRouter.post(
       });
 
     const newUser = new User({
-      username: req.body.username,
-      email: req.body.email,
-      password: bcrypt.hashSync(req.body.password),
+      username: SignupFormValues.username,
+      email: SignupFormValues.email,
+      password: bcrypt.hashSync(SignupFormValues.password, 8),
     });
     const user = await newUser.save();
     res.status(201).send({
-      username,
-      email,
+      username: user.username,
+      email: user.email,
+      isAdmin: user.isAdmin,
       token: generateToken(user),
     });
   })

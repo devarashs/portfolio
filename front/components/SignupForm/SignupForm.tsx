@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -15,6 +15,12 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { toast } from "@/hooks/use-toast";
+import { getError } from "@/lib/getError";
+import { selectUserInfo, signIn } from "@/lib/redux/User/UserSlice";
+import { useDispatch, useSelector } from "react-redux";
+import axios from "@/lib/axios";
+import { redirect } from "next/navigation";
 
 const formSchema = z.object({
   username: z.string().min(2).max(50),
@@ -34,11 +40,51 @@ export default function SignupBox() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  const [loading, setLoading] = React.useState(false);
+  const userInfo = useSelector(selectUserInfo);
+  const dispatch = useDispatch();
+
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
-    console.log(values);
+
+    //check if password and confirmPassword are the same
+
+    if (values.password !== values.confirmPassword) {
+      toast({
+        title: "Error",
+        description: "Passwords do not match",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const { data } = await axios.post("/user/signup", {
+        username: values.username,
+        email: values.email,
+        password: values.password,
+      });
+      dispatch(signIn(data));
+      setLoading(false);
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        toast({
+          title: "Error",
+          description: getError(err),
+          variant: "destructive",
+        });
+        setLoading(false);
+      }
+    }
   }
+
+  useEffect(() => {
+    if (userInfo) redirect("/");
+  });
+
+  if (userInfo === undefined) return;
   return (
     <div className="md:flex md:flex-row md:justify-center">
       <Form {...form}>
@@ -105,7 +151,9 @@ export default function SignupBox() {
               </FormItem>
             )}
           />
-          <Button type="submit">Sign Up!</Button>
+          <Button type="submit" disabled={loading}>
+            Sign Up!
+          </Button>
         </form>
       </Form>
     </div>
