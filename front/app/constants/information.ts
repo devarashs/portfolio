@@ -34,7 +34,7 @@ export const ContactInfo = [
   },
   {
     title: "Twitch",
-    link: "https://twitch.tv/jungleash",
+    link: "https://twitch.tv/damagedcodaa",
     description: "Catch me live on Twitch",
     logo: TwitchLogo,
   },
