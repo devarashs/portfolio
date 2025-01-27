@@ -1,0 +1,17 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/devarashs/portfolio.git",
+  "author": "devarashs <southernwavesofmadness@protonmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "yarn && concurrently \"cd server && yarn && yarn dev\" \"cd front && yarn && yarn dev\"",
+    "start": "yarn && concurrently \"cd server && yarn && yarn start\" \"cd front && yarn && yarn build && yarn lint && yarn preview\"",
+    "build": "yarn && concurrently \"cd server && yarn\" \"cd front && yarn && yarn build\""
+  },
+  "dependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
