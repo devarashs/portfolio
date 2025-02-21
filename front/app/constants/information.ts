@@ -9,7 +9,7 @@ export const HeaderInfo = {
   githubLink: "https://github.com/devarashs",
   navLinks: [
     { title: "Home", path: "/" },
-    { title: "Blogs", path: "/blogs" },
+    // { title: "Blogs", path: "/blogs" },
   ],
 };
 

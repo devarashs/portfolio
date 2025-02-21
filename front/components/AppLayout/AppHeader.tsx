@@ -4,7 +4,7 @@ import Link from "next/link";
 import ThemeChanger from "../ThemeChanger/ThemeChanger";
 import { HeaderInfo } from "@/app/constants/information";
 
-import { Menu, User2Icon } from "lucide-react";
+import { Menu } from "lucide-react";
 import {
   Sheet,
   SheetContent,
@@ -36,9 +36,9 @@ export default function AppHeader() {
 
         <div className="flex flex-row justify-between items-center gap-10">
           <ThemeChanger />
-          <Link href={"/login"}>
+          {/* <Link href={"/login"}>
             <User2Icon />
-          </Link>
+          </Link> */}
         </div>
 
         <Sheet>
