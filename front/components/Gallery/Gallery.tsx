@@ -6,7 +6,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Button } from "../ui/button";
+// import { Button } from "../ui/button";
 
 export interface GalleryCard {
   title: string;
@@ -28,9 +28,9 @@ export default function Gallery({
             <CardDescription>{data.description}</CardDescription>
           </CardHeader>
           <CardContent>
-            <a target="_blank" rel="noopener noreferrer" href={data.link}>
+            {/* <a target="_blank" rel="noopener noreferrer" href={data.link}>
               <Button>More</Button>
-            </a>
+            </a> */}
           </CardContent>
         </div>
       </Card>
